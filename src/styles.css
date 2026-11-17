@@ -1,0 +1,179 @@
+:root {
+  --ink: #17233b;
+  --paper: #eef1f6;
+  --card: #ffffff;
+  --marker: #ffd23f;
+  --pass: #1f7a5a;
+  --fail: #c63a2f;
+  --muted: #5d6b85;
+  --line: #d3dae6;
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --body: "Figtree", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.5;
+}
+
+.board {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.masthead h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  display: inline;
+  background: linear-gradient(transparent 58%, var(--marker) 58% 92%, transparent 92%);
+  padding: 0 0.15em;
+  margin-left: -0.15em;
+}
+
+.lede { margin-top: 1rem; color: var(--muted); max-width: 46ch; }
+
+.tally {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin: 2rem 0 1rem;
+  padding: 1rem 0;
+  border-block: 2px solid var(--ink);
+}
+.tally-item { color: var(--muted); }
+.tally-item strong {
+  font-family: var(--display);
+  font-size: 1.9rem;
+  color: var(--ink);
+  margin-right: 0.25rem;
+}
+.tally-item.pass strong { color: var(--pass); }
+.tally-item.fail strong, .tally-item.warn strong { color: var(--fail); }
+
+.note {
+  margin-bottom: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border-left: 4px solid var(--fail);
+  background: #fbe9e7;
+  font-size: 0.95rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: end;
+  margin: 1.5rem 0 2rem;
+}
+.search { display: grid; gap: 0.3rem; font-weight: 600; font-size: 0.9rem; }
+.search input {
+  width: 11rem;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--card);
+  font: inherit;
+  color: var(--ink);
+}
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+  padding: 0.55rem 0.95rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 600 0.9rem var(--body);
+  cursor: pointer;
+}
+.chip:hover { background: var(--card); }
+.chip.on { background: var(--ink); color: var(--paper); }
+.chip:focus-visible, .search input:focus-visible {
+  outline: 3px solid var(--marker);
+  outline-offset: 2px;
+}
+
+.empty { padding: 1.5rem 0; color: var(--muted); }
+
+.slips {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
+  gap: 1.25rem;
+}
+
+.slip {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.grade {
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 5.5rem;
+  line-height: 1;
+  color: var(--paper);
+  background: var(--ink);
+  border-right: 2px dashed var(--paper);
+}
+.grade-A .grade { background: var(--pass); }
+.grade-B .grade { background: #2c6ea3; }
+.grade-C .grade { background: #8a6d00; }
+.grade-D .grade { background: #b8641c; }
+.grade-E .grade { background: var(--fail); }
+
+.info { padding: 1rem 1.1rem 1.1rem; }
+.info h2 { font-family: var(--display); font-size: 1.35rem; line-height: 1.2; }
+.course { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.9rem; }
+
+.meter {
+  position: relative;
+  height: 0.7rem;
+  background: var(--line);
+  border-radius: 99px;
+  margin-bottom: 0.4rem;
+}
+.fill { position: absolute; inset: 0 auto 0 0; background: var(--ink); border-radius: 99px; }
+.avg, .pass-line {
+  position: absolute;
+  top: -0.3rem;
+  width: 3px;
+  height: 1.3rem;
+  transform: translateX(-1px);
+}
+.avg { background: var(--marker); outline: 1px solid var(--ink); }
+.pass-line { background: var(--fail); }
+
+.meta { font-size: 0.9rem; color: var(--muted); }
+.meta b { color: var(--ink); font-size: 1.05rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+.tag {
+  padding: 0.15rem 0.6rem;
+  border: 1.5px solid var(--line);
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.tag.ok { border-color: var(--pass); color: var(--pass); }
+.tag.bad { border-color: var(--fail); color: var(--fail); }
+
+@media (max-width: 480px) {
+  .slip { grid-template-columns: 4.5rem 1fr; }
+  .grade { font-size: 3.5rem; }
+}
