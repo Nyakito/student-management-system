@@ -9,6 +9,7 @@ export const students = [
   { id: 8, name: "Hannah Abbott", age: 19, course: "Artificial Intelligence", marks: 23, feesPaid: true },
   { id: 9, name: "Tracey Malcolm", age: 24, course: "Mobile App Development", marks: 91, feesPaid: true },
   { id: 10, name: "Elvis Roberts", age: 21, course: "Computer Networks", marks: 86, feesPaid: true },
+  { id: 10, name: "Steve Roberts", age: 21, course: "Real Esate", marks: 76, feesPaid: false },
 ];
 
 //The data above is provided by a great team I met somewhere, oooh! you will see alot of the names all over my sites
